@@ -1,0 +1,56 @@
+body{
+	background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url(slack.png);
+	height: 100vh;
+	 background-size: cover;
+	 background-position: center;
+}
+
+.login-page{
+	width: 300px;
+	padding: 10% 0 0;
+	margin: auto;
+}
+
+.form{
+	background-color: #3cb371;
+	max-width: 360px;
+	margin: auto;
+	padding: 25px;
+	position: center;
+	text-align: center;
+}
+
+.form input{
+	font-family: sans-serif;
+	background-color: #f2f2f2;
+	width: 100%;
+	outline: 1;
+	margin: 0 0 15px;
+	padding: 15px;
+	box-sizing: border-box;
+	font-size: 12px;
+}
+.form button{
+	font-family: sans-serif;
+	text-transform: uppercase;
+	outline: 0;
+	background-color: #0000ff;
+	width: 100%;
+	border: 0;
+	padding: 15px;
+	color: #FFFFFF;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+.form button:hover{
+	background-color: #43A047;
+}
+
+.form .message{
+	font-size: 12px;
+}
+
+.form .register-form{
+	display: none;
+}
