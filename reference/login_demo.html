@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login and Registration form</title>
+	<link rel="stylesheet" href="../site/loginstyle.css">
+</head>
+<script>
+
+    // Utility Functions
+	// ------------------------------------------------------------------------
+
+    function showRegisterForm() {
+        document.getElementById('register-form').style.display = "block";
+        document.getElementById('login-form').style.display = "none";
+    }
+
+    function showLoginForm() {
+        document.getElementById('register-form').style.display = "none";
+        document.getElementById('login-form').style.display = "block";
+    }
+
+
+    // Registration Related
+    // ------------------------------------------------------------------------
+
+    
+    // Users Data
+    var users = [];
+
+    function registerUser() {
+        // Read User information
+        var name = document.getElementById('reg-name').value;
+        var emailId = document.getElementById('reg-email').value;
+        var password = document.getElementById('reg-password').value;
+
+        // Prepare User Object
+        var newUser = {
+            "name" : name,
+            "emailId" : emailId,
+            "password" : password
+        }
+
+        // Register User (save)
+        users.push(newUser);
+
+        console.log(users);
+
+        // Show Login form
+        showLoginForm()
+    }
+
+
+    // Login Related
+    // ------------------------------------------------------------------------
+
+    function loginUser() {
+        // Read Login User information
+        var inUsername = document.getElementById('login-username').value;
+        var inPassword = document.getElementById('login-password').value;
+        
+        // Login User Obj
+        var loginObj = {
+            "username" : inUsername,
+            "password" : inPassword
+        }
+
+        // Call API to check
+        console.log("existing users : " + users.length);
+        
+        for(var i = 0; i < users.length; i++) {
+            var u = users[i];
+            
+            if (u.emailId == inUsername && u.password == inPassword) {
+                alert("Login Successfull !!!");
+                window.open("https://www.w3schools.com/");
+            }
+        }
+    }
+    
+</script>
+<body>
+  <div class="login-page">
+    <div class="form">
+
+      <form class="register-form" id="register-form" onsubmit="registerUser()">
+        <input type="text" id="reg-name" placeholder="name" /> 
+        <input type="text" id="reg-email" placeholder="email id" />
+        <input type="password" id="reg-password" placeholder="password" /> 
+        <button>Create</button>
+
+        <p class="message">
+          Already registered? <a href="#" onclick="showLoginForm()">Login</a>
+        </p>
+      </form>
+
+      <form class="login-form" id="login-form" onsubmit="loginUser()">
+        <input type="text" id="login-username" placeholder="username" />
+        <input type="password" id="login-password" placeholder="password" />
+        <button>login</button>
+
+        <p class="message">
+          Not Registered? <a href="#" onclick="showRegisterForm()">Register</a>
+        </p>
+      </form>
+
+    </div>
+  </div>
+
+</body>
+</html>
