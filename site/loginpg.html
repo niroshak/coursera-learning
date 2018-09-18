@@ -5,9 +5,49 @@
 	<link rel="stylesheet" href="loginstyle.css">
 </head>
 <script>
+	 var persons=[
+{
+	name: "nirosha",
+	password: "nirosha123",
+	emailid: "kay.nirosha@gmail.com"
+},
+{
+	name: "pinky",
+	password: "pinky@1",
+	emailid: "pinky@gmail.com"
+}];
+var register={};
+
+document.getElementById("demo1").display="block";
+function Registration(){
+	register.name=document.getElementById('name').value;
+	register.password=document.getElementById('password').value;
+	register.emailid=document.getElementById('emailid').value;
+	return register;
+	} 
+persons.push(register);
+
+	function validate(){
+var username = document.getElementById("input1").value;
+var password = document.getElementById("input2").value;
+for (var i=0;i<persons.length;i++){
+	if(username==persons[i].name && password==persons[i].password){
+	alert("Login successfully");
+	window.open("https://www.w3schools.com/");
+}
+else{
+	alert("Invalid username or password");
+}
+}
+console.log(persons);
+}
 	function Myfunction(){
 		document.getElementById('demo1').style.display = "block";
 		document.getElementById('demo2').style.display = "none";
+	}
+	function Myfunction1(){
+		document.getElementById('demo1').style.display = "none";
+		document.getElementById('demo2').style.display = "block";
 	}
 </script>
 <body>
@@ -15,21 +55,21 @@
 	<div class="form">
 	     <form class="register-form" id = 'demo1'>
 	     	<input type="text" placeholder="name"/>
-            <input type="text" placeholder="password"/>
+            <input type="password" placeholder="password"/>
             <input type="text" placeholder="email id"/>
             <button>Create</button>
-
-            <p class="message">Already registered? <a href="#">Login</a></p>
+            
+            <p class="message">Already registered? <a href="#" onclick="Myfunction1()">Login</a></p>
 	     </form>
 
 	     <form class="login-form" id = "demo2">
 	     <input type="text" placeholder="user name"/>
-	     <input type="text" placeholder="password"/>
+	     <input type="password" placeholder="password"/>
 	     <button>login</button>
-	     </form>
-
+	     
+             </form>
              <p class="message">Not Registered? <a href="#" onclick = "Myfunction()">Register</a></p>
-
+             
 	</div>
 </div>
 
