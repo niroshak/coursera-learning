@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>validate password</title>
+</head>
+<script type="text/javascript">
+  var islogin=false;
+ function validateUpperCase(){
+  console.log("validate")
+  var str = document.getElementById("pwd").value;
+  console.log(str)
+  check=document.getElementById("demo");
+  var uppercase= /[A-Z]/g;
+  if(check.checked){
+    islogin=true;
+    if(uppercase.test(str)){
+     console.log(" VALID")
+   }else {
+    console.log("NOT VALID")
+  }
+}
+}
+function validateLowerCase(){
+  var str1=document.getElementById("pwd").value;
+  check1=document.getElementById("demo1");
+  var lowercase=/[a-z]/g;
+  if(check1.checked){
+    islogin=true;
+    if(lowercase.test(str1)){
+      console.log("VALID")
+    }else{
+      console.log("NOT VALID");
+    }
+  }
+}
+function digitsOnly(){
+  var str2=document.getElementById("pwd").value;
+  check2=document.getElementById("demo2");
+  var digits=/[0-9]/g;
+  if(check2.checked){
+    islogin=true;
+    if(digits.test(str2)){
+      console.log("VALID")
+    }else{
+      console.log("NOT VALID");
+    }
+  } 
+}
+function minimumLengthBe8(){
+  var str3=document.getElementById("pwd").value;
+  check3 = document.getElementById("demo3");
+  var length=str3.length;
+  if(check3.checked){
+    islogin=true;
+   if(length<8){
+    console.log("NOT VALID")
+  }else{
+    console.log("VALID");
+  }
+}
+}
+
+
+</script>
+<body>
+  <input type="text" name="password" placeholder="password" id="pwd" />
+  <input type="checkbox" id ="demo"> uppercase only<br>
+  <input type="checkbox" id ="demo1"> lowercase only<br>
+  <input type="checkbox" id ="demo2"> digits only<br>
+  <input type="checkbox" id ="demo3"> Minimum Length should be 8 <br>
+  <input type="button" name="submit" value="submit" onclick="minimumLengthBe8(); validateUpperCase() ;validateLowerCase()"/>
+</body>
+</html>

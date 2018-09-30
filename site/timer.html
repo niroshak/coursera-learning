@@ -1,0 +1,49 @@
+   // colour library
+        var colorlibrary=[
+        {
+            "colorname"="Black",
+            "hexcode"="#000000"
+        },
+        {
+            "colorname"="Red",
+            "hexcode"="#FF0000"
+        },
+        {
+            "colorname"="yellow",
+            "hexcode"="#FFFF00"
+        },
+        {
+            "colorname"="green",
+            "hexcode"="#008000"
+        },
+        {
+            "colorname"="Blue",
+            "hexcode"="#0000FF"
+        },
+        {
+            "colorname"="Purple",
+            "hexcode"="#800080"
+        },
+        {
+            "colorname"="LightPink",
+            "hexcode"="#FFB6C1"
+        },
+        {
+            "colorname"="Orange",
+            "hexcode"="#FF4500"
+        },
+        {
+            "colorname"="Brown",
+            "hexcode"="#A52A2A"
+        },
+        {
+            "colorname"="white",
+            "hexcode"="#FFFFFF"
+        },
+        ]
+           //TO PICK RANDOM COLOUR FROM LIBRARY
+        function pickRandomColorFromLibrary() {
+        var randomNum =  Math.floor(Math.random() * 16);
+        var randomClr = colorLibrary[randomNum];
+        return randomClr;
+    }

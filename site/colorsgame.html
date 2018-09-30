@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Colour game</title>
+
+	<style>
+	.container{
+		background-color: blue;
+		width: 400px;
+		height: 50px;
+		padding: 20px;
+		margin: 0 auto 15px;
+	}
+
+	button{
+		color: green;
+		width:100%;
+		height:150%;
+	}
+	#timer{
+		float: left;
+	}
+	
+</style>
+<script>
+	var colorlibrary=[
+	{
+		"colorname":"Black",
+		"hexcode":"#000000"
+	},
+	{
+		"colorname":"Red",
+		"hexcode":"#FF0000"
+	},
+	{
+		"colorname":"yellow",
+		"hexcode":"#FFFF00"
+	},
+	{
+		"colorname":"green",
+		"hexcode":"#008000"
+	},
+	{
+		"colorname":"Blue",
+		"hexcode":"#0000FF"
+	},
+	{
+		"colorname":"Purple",
+		"hexcode":"#800080"
+	},
+	{
+		"colorname":"LightPink",
+		"hexcode":"#FFB6C1"
+	},
+	{
+		"colorname":"Orange",
+		"hexcode":"#FF4500"
+	},
+	{
+		"colorname":"Brown",
+		"hexcode":"#A52A2A"
+	},
+	{
+		"colorname":"white",
+		"hexcode":"#FFFFFF"
+	}
+	]
+	//TO PICK RANDOM COLOUR FROM LIBRARY
+	function pickRandomColorFromLibrary() {
+		var randomNum =  Math.floor(Math.random() * 10);
+		console.log(randomNum)
+		var randomClr = colorlibrary[randomNum];
+		return randomClr;
+		console.log(randomClr);
+	}
+
+    //TO REASSIGN COLOR
+    function reAssignColors() {
+    	var colorBoxes = document.getElementsByClassName("container");
+    	
+    	for (var i = 0; i < colorBoxes.length; i++) {
+    		var box = colorBoxes[i];
+    		var randomColor = pickRandomColorFromLibrary();
+
+    		box.style.backgroundColor = randomColor.hexcode;
+    		box.innerHTML = randomColor.colorname;
+    	}
+    }
+    // SETTING TIMER FOR GAME
+    function Timer(){   
+    	var timeleft=30;
+    	var timerId=setInterval(countdown,1000);
+    	var element = document.getElementById("demo")
+    	function countdown(){
+    		if(timeleft==0){
+    			clearTimeout(timerId);
+    		}
+    		else{
+    			timeleft--;
+    			element.innerHTML = '0'+':'+timeleft;
+    		}
+    	}
+    }
+    
+</script>
+
+<body>
+	<button onclick = "Timer()">Start</button>
+	<div id="demo"></div>
+	
+	<div  onclick="reAssignColors()" class="container"></div>
+	<div  onclick="reAssignColors()" class="container"></div>
+	<div  onclick="reAssignColors()" class="container"></div>
+	<div  onclick="reAssignColors()" class="container"></div>
+
+
+</body>
+</html>

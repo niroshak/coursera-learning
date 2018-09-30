@@ -1,0 +1,47 @@
+<script>
+	function Myfunction(){
+		document.getElementById('demo1').style.display = "block";
+		document.getElementById('demo2').style.display = "none";
+	}
+	function Myfunction1(){
+		document.getElementById('demo1').style.display = "none";
+		document.getElementById('demo2').style.display = "block";
+	}
+
+ var persons=[
+{
+	name: "nirosha",
+	password: "nirosha123",
+	email id: "kay.nirosha@gmail.com"
+},
+{
+	name: "pinky",
+	password: "pinky@1",
+	email id: "pinky@gmail.com"
+}];
+
+var register={};
+document.getElementById("demo1").display="block";
+function Registration(){
+	register.name=document.getElementById('name').value;
+	register.password=document.getElementById('password').value;
+	register.emailid=document.getElementById('emailid').value;
+	persons.push(register);
+
+	return register;
+	} 
+
+function validate(){
+var username = document.getElementById("input1").value;
+var password = document.getElementById("input2").value;
+for (var i=0;i<=persons.length;i++){
+	if(username==persons[i].name && password==persons[i].password)
+	alert("Login successfully");
+	window.open("https://www.w3schools.com/");
+}
+else{
+	alert("Invalid username or password");
+}
+}
+
+</script>

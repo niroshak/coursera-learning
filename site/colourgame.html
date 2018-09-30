@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+
+        //GENERATING RANDOM COLOR
+        function randomcolor(){
+            var c=document.getElementsByClassName("container");
+            for(var i=0;i<c.length;i++){
+                var clr= "#"+((1<<24)*Math.random()|0).toString(16);
+                c[i].style.background=clr;
+            }
+        }
+function Timer(){   // SETTING TIMER FOR GAME
+var timeleft=30;
+var timerId=setInterval(countdown,1000);
+var element = document.getElementById("demo")
+function countdown(){
+    if(timeleft==0){
+    clearTimeout(timerId);
+    }
+    else{
+    timeleft--;
+     element.innerHTML = '0'+':'+timeleft;
+}
+}
+}
+</script>
+<title>Colour game</title>
+<style>
+.container{
+    background-color: blue;
+    width: 400px;
+    height: 50px;
+    padding: 20px;
+    margin: 0 auto 15px;
+}
+
+button{
+  color: green;
+  width:100%;
+  height:150%;
+}
+#timer{
+    float: left;
+}
+</style>
+</head>
+<body>
+    <button onclick = "Timer()">Start</button>
+	<div id="demo"></div>
+	<div onclick="randomcolor()" class="container"></div>
+    <div onclick="randomcolor()" class="container"></div>
+    <div onclick="randomcolor()" class="container"></div>
+    <div onclick="randomcolor()" class="container"></div>
+
+
+</body>
+</html>
