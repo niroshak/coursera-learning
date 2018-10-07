@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login and Registration form</title>
+	<link rel="stylesheet" href="../site/loginstyle.css">
+</head>
+<script>
+
+    // Utility Functions
+	// ------------------------------------------------------------------------
+
+  function showRegisterForm() {
+    document.getElementById('register-form').style.display = "block";
+    document.getElementById('login-form').style.display = "none";
+  }
+
+  function showLoginForm() {
+    document.getElementById('register-form').style.display = "none";
+    document.getElementById('login-form').style.display = "block";
+  }
+
+
+    // Registration Related
+    // ------------------------------------------------------------------------
+
+    
+    // Users Data
+    var users = [];
+    var newUser={};
+
+    function registerUser() {
+        // // Read User information
+        // var name = document.getElementById('reg-name').value;
+        // var emailId = document.getElementById('reg-email').value;
+        // var password = document.getElementById('pwd').value;
+
+        // // Prepare User Object
+        // var newUser = {
+        //     "name" : name,
+        //     "emailId" : emailId,
+        //     "password" : password
+        // }
+
+        newUser.name =document.getElementById('reg-name').value;
+        newUser.emailId=document.getElementById('reg-email').value;
+        newUser.password=document.getElementById('pwd').value;
+
+        // Register User (save)
+        
+        console.log(users);
+
+        // Show Login form
+        showLoginForm()
+
+        userValidation()
+      }
+
+
+    // Login Related
+    // ------------------------------------------------------------------------
+
+    function loginUser() {
+        // Read Login User information
+        var inUsername = document.getElementById('login-username').value;
+        var inPassword = document.getElementById('login-password').value;
+        
+        // Login User Obj
+        var loginObj = {
+          "username" : inUsername,
+          "password" : inPassword
+        }
+
+        // Call API to check
+        console.log("existing users : " + users);
+        
+        for(var i = 0; i < users.length; i++) {
+          var u = users[i];
+
+          if (u.emailId == inUsername && u.password == inPassword) {
+            alert("Login Successfull !!!");
+            window.open("https://www.w3s+chools.com/");
+          }
+        }
+      }
+      function validateUpperCase(){
+        var str = document.getElementById("pwd").value;
+        console.log(str)
+        var uppercase= /[A-Z]/g;
+
+          if(uppercase.test(str)){
+    console.log("VALID")
+    if(users.length)
+        {
+                 console.log("users",users.length,users)
+        for(var i=0;i<users.length;i++){
+    
+            if(newUser.name!=users[i].name)
+              users.push(newUser)      
+    }  
+        }
+    else
+     users.push(newUser)
+
+}else{
+    console.log("NOT VALID");
+}
+
+}
+
+  
+function validateLowerCase(){
+  var str1=document.getElementById("pwd").value;
+  
+  var lowercase=/[a-z]/g;
+  
+  if(lowercase.test(str1)){
+    console.log("VALID")
+    if(users.length)
+        {
+                 console.log("users",users.length,users)
+        for(var i=0;i<users.length;i++){
+    
+            if(newUser.name!=users[i].name)
+              users.push(newUser)      
+    }  
+        }
+    else
+     users.push(newUser)
+
+}else{
+    console.log("NOT VALID");
+}
+
+}
+
+
+
+
+function digitsOnly(){
+  var str2=document.getElementById("pwd").value;
+  
+  var digits=/[0-9]/g;
+  
+   if(digits.test(str2)){
+    console.log("VALID")
+    if(users.length)
+        {
+                 console.log("users",users.length,users)
+        for(var i=0;i<users.length;i++){
+    
+            if(newUser.name!=users[i].name)
+              users.push(newUser)      
+    }  
+        }
+    else
+     users.push(newUser)
+
+}else{
+    console.log("NOT VALID");
+}
+
+}
+
+function minimumLengthBe8(){
+  var str3=document.getElementById("pwd").value;
+  
+  var length=str3.length;
+  
+  if(length<8){
+    console.log(" NOT VALID")
+    if(users.length)
+        {
+                 console.log("users",users.length,users)
+        for(var i=0;i<users.length;i++){
+    
+            if(newUser.name!=users[i].name)
+              users.push(newUser)      
+    }  
+        }
+    else
+     users.push(newUser)
+
+}else{
+    console.log("VALID");
+}
+
+}
+
+
+function userValidation(){
+  check=document.getElementById("demo");
+  check1=document.getElementById("demo1");
+  check2=document.getElementById("demo2");
+  check3 = document.getElementById("demo3");
+  if(check.checked){
+    validateUpperCase()
+  }
+  if(check1.checked){
+    validateLowerCase()
+  }
+  if(check2.checked){
+    digitsOnly()
+  }
+  if(check3.checked){
+    minimumLengthBe8()
+  }
+
+}
+
+
+</script>
+<body>
+  <div class="login-page">
+    <div class="form">
+
+      <form class="register-form" id="register-form">
+        <input type="text" id="reg-name" placeholder="name" /> 
+        <input type="text" id="reg-email" placeholder="email id" />
+        <input type="text" id="pwd" placeholder="password"/> 
+        <button onclick="registerUser()">Create</button>
+
+        <p class="message">
+          Already registered? <a href="#" onclick="showLoginForm()">Login</a>
+        </p>
+      </form>
+
+      <form class="login-form" id="login-form" onsubmit="loginUser()">
+        <input type="text" id="login-username" placeholder="username" />
+        <input type="password" id="login-password" placeholder="password" />
+        <button>login</button>
+
+        <p class="message">
+          Not Registered? <a href="#" onclick="showRegisterForm()">Register</a>
+        </p>
+      </form>
+
+    </div>
+  </div>
+
+  <input type="checkbox" id ="demo"> uppercase only<br>
+  <input type="checkbox" id ="demo1"> lowercase only<br>
+  <input type="checkbox" id ="demo2"> digits only<br>
+  <input type="checkbox" id ="demo3"> Minimum Length should be 8 <br>
+
+</body>
+</html>
